@@ -1,0 +1,24 @@
+{
+  "status": "FROZEN_TWO_ROLE_CANDIDATE_FOR_EVAL",
+  "model_name": "Cronus-9B",
+  "base_model": "Qwen/Qwen3.5-9B",
+  "hf_repo": "Sn1waR/Cronus-9B",
+  "base_lock_sha256": "ce6771a6a7862390f37179d427133b24515f167d6c5a159a9acc0d073302c745",
+  "source_default_sha256": "6d55a22ff6b2b80aa61e5db56d365cb8141d01575688413939b4cd86c8ce4d2a",
+  "W0_readout_sha256": "5433b51444d95c06db35ca5aaede155699e5bb92e08247d4b7ae78d970f4940c",
+  "adapters": {
+    "decision": {
+      "path": "loras/role_decision_r16",
+      "guard_sha256": "7f9dbcd86b7911ad9fed50043ee3c11ee49b33d7e3a74f20507c62f223717ada",
+      "config_sha256": "a8f22c22b0466c3331db72bd0448b9b77802e81f295c14694e941451687b7591",
+      "selection_basis": "448-item family CV + WiSE-FT w=0.40"
+    },
+    "scope": {
+      "path": "loras/role_scope_r8",
+      "guard_sha256": "39ae42197acb684232c0cdba5385b82d6c43ad665e2b6601d93447e954375338",
+      "config_sha256": "34b8c189f9fa09f5ef8349033e739c2ef164f0b1d3e4e77ed9c2b0f8d6f47133",
+      "selection_basis": "184-item family CV 1-SE epoch-3"
+    }
+  },
+  "zero_dev_cal_final_selection": true
+}

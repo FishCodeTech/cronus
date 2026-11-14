@@ -1,0 +1,98 @@
+{
+  "status": "CALIBRATION_DIAGNOSTIC_FROZEN",
+  "model_name": "Cronus-9B",
+  "calibration_only": true,
+  "temperature_grid_nll": {
+    "1.0": 0.3301634001892442,
+    "1.1": 0.3031934555608674,
+    "1.25": 0.2730961212834454,
+    "1.5": 0.24277319927429325,
+    "2.0": 0.22798568657330243,
+    "3.0": 0.2804764118386466,
+    "4.0": 0.3623393736610834
+  },
+  "temperature_multiplier": 2.0,
+  "threshold_grid": [
+    {
+      "threshold": 0.9,
+      "contrary_autoallows": 5,
+      "normal_support": 60,
+      "normal_falseblocks": 10,
+      "normal_falseblock_rate": 0.16666666666666666
+    },
+    {
+      "threshold": 0.91,
+      "contrary_autoallows": 5,
+      "normal_support": 60,
+      "normal_falseblocks": 15,
+      "normal_falseblock_rate": 0.25
+    },
+    {
+      "threshold": 0.92,
+      "contrary_autoallows": 5,
+      "normal_support": 60,
+      "normal_falseblocks": 20,
+      "normal_falseblock_rate": 0.3333333333333333
+    },
+    {
+      "threshold": 0.93,
+      "contrary_autoallows": 3,
+      "normal_support": 60,
+      "normal_falseblocks": 30,
+      "normal_falseblock_rate": 0.5
+    },
+    {
+      "threshold": 0.94,
+      "contrary_autoallows": 1,
+      "normal_support": 60,
+      "normal_falseblocks": 35,
+      "normal_falseblock_rate": 0.5833333333333334
+    },
+    {
+      "threshold": 0.95,
+      "contrary_autoallows": 0,
+      "normal_support": 60,
+      "normal_falseblocks": 44,
+      "normal_falseblock_rate": 0.7333333333333333
+    },
+    {
+      "threshold": 0.96,
+      "contrary_autoallows": 0,
+      "normal_support": 60,
+      "normal_falseblocks": 53,
+      "normal_falseblock_rate": 0.8833333333333333
+    },
+    {
+      "threshold": 0.97,
+      "contrary_autoallows": 0,
+      "normal_support": 60,
+      "normal_falseblocks": 60,
+      "normal_falseblock_rate": 1.0
+    },
+    {
+      "threshold": 0.98,
+      "contrary_autoallows": 0,
+      "normal_support": 60,
+      "normal_falseblocks": 60,
+      "normal_falseblock_rate": 1.0
+    },
+    {
+      "threshold": 0.99,
+      "contrary_autoallows": 0,
+      "normal_support": 60,
+      "normal_falseblocks": 60,
+      "normal_falseblock_rate": 1.0
+    }
+  ],
+  "diagnostic_operating_point": {
+    "threshold": 0.95,
+    "contrary_autoallows": 0,
+    "normal_support": 60,
+    "normal_falseblocks": 44,
+    "normal_falseblock_rate": 0.7333333333333333
+  },
+  "operating_threshold": 0.95,
+  "calibration_gate_pass": false,
+  "threshold_minimum": 0.9,
+  "argmax_proceed_required": true
+}

@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cronus-guard"
+version = "0.1.0"
+description = "Cronus-9B: Sub-50ms zero-generation two-role pre-execution security guardrail on Qwen3.5-9B"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+train = [
+  "torch>=2.6",
+  "transformers>=4.57",
+  "peft>=0.15",
+  "safetensors>=0.4",
+  "triton>=3.2",
+]
+serve = [
+  "vllm>=0.30.0",
+  "transformers>=4.57",
+  "torch>=2.6",
+  "safetensors>=0.4",
+]
+eval = [
+  "safetensors>=0.4",
+  "huggingface_hub>=0.25",
+]
+
+[project.scripts]
+cronus-serve = "cronus.deploy.serve_vllm:main"
+cronus-serve-native = "cronus.deploy.serve_native:main"
+cronus-verify-api = "cronus.eval.verify_live_api:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cronus = ["configs/*.json"]

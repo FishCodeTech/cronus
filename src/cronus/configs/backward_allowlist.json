@@ -1,0 +1,42 @@
+[
+  {
+    "module": "fla.modules.fused_norm_gate",
+    "name": "layer_norm_gated_bwd_kernel",
+    "module_sha256": "d8654c43cbea15799a9863ba0758f46b86c411285adf34c3c96735ef984d88d5"
+  },
+  {
+    "module": "fla.modules.fused_norm_gate",
+    "name": "layer_norm_gated_bwd_kernel1",
+    "module_sha256": "d8654c43cbea15799a9863ba0758f46b86c411285adf34c3c96735ef984d88d5"
+  },
+  {
+    "module": "fla.modules.l2norm",
+    "name": "l2norm_bwd_kernel",
+    "module_sha256": "30f7feebdbfa87b8e90c143ec62a7fa0781bfd736c856c0ec69452f0c778be3f"
+  },
+  {
+    "module": "fla.modules.l2norm",
+    "name": "l2norm_bwd_kernel1",
+    "module_sha256": "30f7feebdbfa87b8e90c143ec62a7fa0781bfd736c856c0ec69452f0c778be3f"
+  },
+  {
+    "module": "fla.ops.common.chunk_o",
+    "name": "chunk_bwd_kernel_dv_local",
+    "module_sha256": "f174d431ce67139204a0916f638b5af158dd5917e2cb37c0ca03f5ce735466a0"
+  },
+  {
+    "module": "fla.ops.common.chunk_o",
+    "name": "chunk_bwd_kernel_dqkwg",
+    "module_sha256": "f174d431ce67139204a0916f638b5af158dd5917e2cb37c0ca03f5ce735466a0"
+  },
+  {
+    "module": "fla.ops.common.chunk_delta_h",
+    "name": "chunk_gated_delta_rule_bwd_kernel_dhu_blockdim64",
+    "module_sha256": "ff461bcc40e9cd0b2ca24af9ae9c3c6d99b2deae047c3737687c93b3fcd6ea57"
+  },
+  {
+    "module": "fla.ops.gated_delta_rule.wy_fast",
+    "name": "prepare_wy_repr_bwd_kernel",
+    "module_sha256": "bf24a66524ea56383fe6c9a97ae6b060ebe9490589c8499fba06d6172dc4510f"
+  }
+]
