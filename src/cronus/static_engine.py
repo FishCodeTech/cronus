@@ -285,7 +285,8 @@ class StaticModelRunner:
 
         if readout_path is not None and readout_path.is_file():
             ro = load_file(str(readout_path))
-            self.W = ro["W"].float().cuda()
+            w_tensor = ro["W0"] if "W0" in ro else ro["W"]
+            self.W = w_tensor.float().cuda()
         else:
             self.W = self.model.lm_head.weight.detach()[self.label_ids].float().cuda()
 

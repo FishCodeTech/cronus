@@ -8,16 +8,26 @@
   "W0_readout_sha256": "5433b51444d95c06db35ca5aaede155699e5bb92e08247d4b7ae78d970f4940c",
   "adapters": {
     "decision": {
-      "path": "loras/role_decision_r16",
+      "path": "source_bf16/role_decision_wiseft_w040",
       "guard_sha256": "7f9dbcd86b7911ad9fed50043ee3c11ee49b33d7e3a74f20507c62f223717ada",
       "config_sha256": "a8f22c22b0466c3331db72bd0448b9b77802e81f295c14694e941451687b7591",
       "selection_basis": "448-item family CV + WiSE-FT w=0.40"
     },
     "scope": {
-      "path": "loras/role_scope_r8",
+      "path": "source_bf16/role_scope_epoch3",
       "guard_sha256": "39ae42197acb684232c0cdba5385b82d6c43ad665e2b6601d93447e954375338",
       "config_sha256": "34b8c189f9fa09f5ef8349033e739c2ef164f0b1d3e4e77ed9c2b0f8d6f47133",
       "selection_basis": "184-item family CV 1-SE epoch-3"
+    }
+  },
+  "serving_loras": {
+    "decision": {
+      "path": "loras/role_decision_r16",
+      "weights_sha256": "720611c11706ecba915ef566b867328b6e8966b72989c5e04e54ffdba2e2f3e4"
+    },
+    "scope": {
+      "path": "loras/role_scope_r8",
+      "weights_sha256": "483d0b8e51cc998ef1cd6921f3e3f81f54d26ed6221026eb64c27c018145dbcd"
     }
   },
   "zero_dev_cal_final_selection": true

@@ -131,7 +131,7 @@ Reproduce the full Cronus-9B build from `Qwen/Qwen3.5-9B`:
 | Artifact | Details | SHA-256 |
 | --- | --- | --- |
 | Base model lock | `Qwen/Qwen3.5-9B` (BF16, `262,144` native context) | `ce6771a6a7862390f37179d427133b24515f167d6c5a159a9acc0d073302c745` |
-| `W0` readout | `readout.safetensors` (`26x4096` FP32 `W` + `label_ids`) | `5433b51444d95c06db35ca5aaede155699e5bb92e08247d4b7ae78d970f4940c` |
+| `W0` readout | `readout.safetensors` (`26x4096` FP32 `W0` + `label_ids`) | `5433b51444d95c06db35ca5aaede155699e5bb92e08247d4b7ae78d970f4940c` |
 | Stage-1 `default` | `adapter_model.safetensors` (176 tensors, `r=8`, `alpha=16`) | `6d55a22ff6b2b80aa61e5db56d365cb8141d01575688413939b4cd86c8ce4d2a` |
 | `role_decision_r16` | `guard.safetensors` (496 tensors, `r=16`, `alpha=32`, WiSE-FT `w=0.40`) | `7f9dbcd86b7911ad9fed50043ee3c11ee49b33d7e3a74f20507c62f223717ada` |
 | `role_scope_r8` | `guard.safetensors` (496 tensors, `r=8`, `alpha=16`, `epoch-3`) | `39ae42197acb684232c0cdba5385b82d6c43ad665e2b6601d93447e954375338` |

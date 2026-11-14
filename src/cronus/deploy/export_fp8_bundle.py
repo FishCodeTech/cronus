@@ -275,9 +275,9 @@ def main() -> None:
         shutil.copy2(args.readout_path, w0_dir / "readout.safetensors")
 
     release_manifest = dict(spec)
-    release_manifest["adapters"] = {
-        "decision": {**spec["adapters"]["decision"], "path": "loras/role_decision_r16"},
-        "scope": {**spec["adapters"]["scope"], "path": "loras/role_scope_r8"},
+    release_manifest["serving_loras"] = {
+        "decision": {"path": "loras/role_decision_r16", "weights_sha256": dec_info["weights_sha256"]},
+        "scope": {"path": "loras/role_scope_r8", "weights_sha256": scp_info["weights_sha256"]},
     }
     (guard_cfg / "cronus_manifest.json").write_text(json.dumps(release_manifest, indent=2) + "\n")
 
