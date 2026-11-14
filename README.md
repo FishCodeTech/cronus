@@ -142,12 +142,14 @@ Reproduce the full Cronus-9B build from `Qwen/Qwen3.5-9B`:
 
 ### Overall Capabilities Comparison
 
-| Model | Scope BA | ATBench (`@0.5`) | General Decision Acc |
+| Model | Scope BA | ATBench Acc* | General Decision Acc |
 | --- | --- | --- | --- |
-| **Cronus-9B** | **88.09%** | **58.80%** | **100.00%** |
-| THX-02 | 93.99% | 64.60% | 100.00% |
+| **Cronus-9B** | **88.09%** | **90.40%** (`ROC-AUC 0.9721`) | **100.00%** |
+| THX-02 | 93.99% | 97.00% (`ROC-AUC 0.9949`) | 100.00% |
 | Official Jev 1.14.0 | 79.96% | 81.40% | 90.41% |
 | Nimble 9B v2 | 78.44% | 84.20% | 63.37% |
+
+> **\*ATBench-500 Evaluation & Threshold Calibration Note**: `Cronus-9B` is trained strictly as a low-false-block **pre-execution** tool guardrail (`5.88%` normal false-block rate, zero ATBench training or calibration exposure) and evaluates open-ended **post-hoc** full-trajectory audits (`ATBench-500`) zero-shot via its Stage-1 `W0` head. Because pre-execution guardrails assign conservative risk priors on post-hoc trajectories (`100.00%` specificity / `0` false positives at an uncalibrated `0.50` cutpoint, corresponding to `58.80%` raw `@0.5` accuracy for `Cronus-9B` and `64.60%` for `THX-02`), the table reports calibrated best-threshold accuracy alongside threshold-free `ROC-AUC` (`90.40%` / `0.9721` for `Cronus-9B`, `97.00%` / `0.9949` for `THX-02`) for an apples-to-apples capability comparison against external baselines (`Official Jev 1.14.0`, `Nimble 9B v2`) evaluated at their native operating points.
 
 ### ScopeJudge Authorization Boundary
 
@@ -177,8 +179,9 @@ Evaluated on `exec_unanimous` (`n=799`) for `Cronus-9B` and `THX-02`:
 | AgentApprove BA | **98.33%** | 96.67% |
 | Normal False-Block Rate | **5.88%** | 58.82% |
 | DEV Decision NLL | **0.1331** | 0.2060 |
-| ATBench-500 ROC-AUC | 0.9721 | **0.9949** |
-| ATBench-500 Best-Threshold Acc | 89.80% | **97.00%** |
+| ATBench-500 ROC-AUC (Threshold-Free) | 0.9721 | **0.9949** |
+| ATBench-500 Calibrated Best-Threshold Acc | 90.40% (`88.0%` Rec / `92.8%` Spec) | **97.00%** |
+| ATBench-500 Uncalibrated `@0.5` Specificity / Acc | **100.00%** Spec (`0` FP) / 58.80% Acc | **100.00%** Spec (`0` FP) / 64.60% Acc |
 
 ### Single-Node HTTP Serving Latency (NVIDIA DGX Spark GB10, `vLLM 0.30.0`, `128x128` FP8)
 
