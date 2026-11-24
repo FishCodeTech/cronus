@@ -22,6 +22,7 @@ if [[ -z "${BUNDLE_DIR}" ]]; then
 fi
 
 DOCKER_ARGS=(
+  --entrypoint python3
   --name "${CONTAINER_NAME}"
   --gpus all
   --user 1000:1000
@@ -32,6 +33,7 @@ DOCKER_ARGS=(
   -p "${PORT}:${PORT}"
   -e CUDA_MEM_FRACTION=0.33
   -e GUARD_GPU_MEM_UTIL=0.30
+  -e VLLM_ALLOW_INSECURE_SERIALIZATION=1
   -e CRONUS_BUNDLE_DIR=/models/Cronus-9B
   -e CRONUS_HOST="${HOST}"
   -e CRONUS_PORT="${PORT}"
@@ -57,12 +59,20 @@ if [[ -n "${CACHE_ROOT}" ]]; then
   DOCKER_ARGS+=(
     -v "${CACHE_ROOT}/.vllm030-cache/inductor:/tmp/cronus-cache/inductor"
     -v "${CACHE_ROOT}/.vllm030-cache/vllm:/tmp/cronus-cache/vllm"
+    -v "${CACHE_ROOT}/.vllm030-cache/triton:/tmp/cronus-cache/triton"
+    -v "${CACHE_ROOT}/.vllm030-cache/torch:/tmp/cronus-cache/torch"
+    -v "${CACHE_ROOT}/.vllm030-cache/cuda:/tmp/cronus-cache/cuda"
+    -v "${CACHE_ROOT}/.vllm030-cache/xdg:/tmp/cronus-cache/xdg"
     -v "${CACHE_ROOT}/.hf-cache:/tmp/cronus-cache/hf"
     -e "TORCHINDUCTOR_CACHE_DIR=/tmp/cronus-cache/inductor"
     -e "VLLM_CACHE_ROOT=/tmp/cronus-cache/vllm"
+    -e "TRITON_CACHE_DIR=/tmp/cronus-cache/triton"
+    -e "TORCH_HOME=/tmp/cronus-cache/torch"
+    -e "CUDA_CACHE_PATH=/tmp/cronus-cache/cuda"
+    -e "XDG_CACHE_HOME=/tmp/cronus-cache/xdg"
     -e "HF_HOME=/tmp/cronus-cache/hf"
   )
 fi
 
 docker run -d "${DOCKER_ARGS[@]}" "${IMAGE}" \
-  python3 -u -m cronus.deploy.serve_vllm
+  -u -O -m cronus.deploy.serve_vllm
